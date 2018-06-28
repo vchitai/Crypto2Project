@@ -2,6 +2,10 @@
 
 *Thông tin lưu trong json được mã hóa bằng base64encoder*
 
+![alt text][logo]
+
+[logo]: /img/Demo.PNG "Demo"
+
 ## Export / Import thông tin tài khoản
 
 Thông tin tài khoản khi đăng kí được export mặc định vào thư mục **user/email.usr**
