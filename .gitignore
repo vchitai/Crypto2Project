@@ -2,7 +2,7 @@
 
 *.iml
 file/*
-user/*
+user/*.usr
 
 ## Directory-based project format:
 .idea/
