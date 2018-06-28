@@ -1,5 +1,7 @@
 # Crypto2Project
 
+*Thông tin lưu trong json được mã hóa bằng base64encoder*
+
 ## Export / Import thông tin tài khoản
 
 Thông tin tài khoản khi đăng kí được export mặc định vào thư mục **user/email.usr**
