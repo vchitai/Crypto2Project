@@ -3,6 +3,7 @@
 *.iml
 file/*
 user/*.usr
+venv/
 
 ## Directory-based project format:
 .idea/
