@@ -57,7 +57,7 @@ Cấu trúc tập tin mã hóa (JSON):
 ```json
 {
     "alg": "Thuật toán mã hóa",
-    "secret_key": "Secret Key của thuật toán mã hóa đối xứng mã hóa bằng Public Key của người nhận"
+    "secret_key": "Secret Key của thuật toán mã hóa đối xứng mã hóa bằng Public Key của người nhận",
     "cipher_text": "Dữ liệu mã hóa",
     "tag": "Băm dữ liệu gốc để xác nhận",
     "...": "Thông tin thêm cho từng thuật toán cụ thể"
