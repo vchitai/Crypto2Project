@@ -1,5 +1,7 @@
 # Crypto2Project
 
+[Update 28/06/2018]
+
 *Thông tin lưu trong json được mã hóa bằng base64encoder*
 
 ![alt text][logo]
@@ -51,7 +53,7 @@ Thông tin cần cung cấp:
 - **Algorithm**: Thuật toán dùng để mã hóa
 - **Receiver**: Email người nhận (phải có sẵn trong cơ sở dữ liệu aka thư mục **user/**)
 
-Kết quả: Tập tin đã được mã hóa **\*.d**
+Kết quả: Tập tin đã được mã hóa **\*.e**
 
 Cấu trúc tập tin mã hóa (JSON):
 ```json
@@ -66,9 +68,17 @@ Cấu trúc tập tin mã hóa (JSON):
 
 Các thuật toán hỗ trợ:
 
-- **AES_MODE_EAX**
-- **AES_MODE_CFB**
-- **DES**
+- *Block Cipher*
+    - **AES_MODE_EAX**
+    - **AES_MODE_OCB**
+    - **AES_MODE_CFB**
+    - **AES_MODE_CTR**
+    - **Single DES (Default MODE OFB)**
+    - **RC2 (Default MODE CFB)**
+- *Stream Cipher*
+    - **ARC4**
+    - **ChaCha20**
+    - **Salsa20**
 - *(Updating...)*
 
 ## Giải mã tập tin
@@ -76,19 +86,19 @@ Các thuật toán hỗ trợ:
 
 Chọn tập tin được mã hóa đúng chuẩn được mã hóa bằng quá trình trên và dùng tài khoản của mình để giải mã.
 
-Kết quả: Nếu đúng chuẩn và đúng chủ sở hữu, nhận được tập tin đã giải mã **\*.e** là nội dung file gốc trước khi mã hóa
+Kết quả: Nếu đúng chuẩn và đúng chủ sở hữu, nhận được tập tin đã giải mã **\*.d** là nội dung file gốc trước khi mã hóa.
 
 ## Tạo chữ ký tập tin
 
 *Cần xác nhận email và mật khẩu để tiếp tục*
 
-Chọn tập tin và xác nhận đăng nhập để dùng khóa bí mật ký trên tập tin
+Chọn tập tin và xác nhận đăng nhập để dùng khóa bí mật ký trên nội dung đã được băm của tập tin.
 
 Kết quả: Tập tin đã được ký **\*.sig**
 
 ## Xác nhận chữ ký
 
-Chọn tập tin cần xác nhận và tập tin chữ ký (**\*.sig**)
+Chọn tập tin cần xác nhận và tập tin chữ ký (**\*.sig**). Chương trình sẽ duyệt tìm cơ sở dữ liệu để tìm ra người đã ký tập tin.
 
 Kết quả: Nhận được thông báo về người đã ký tập tin (Phải có trong cơ sở dữ liệu aka thư mục **user/**)
 

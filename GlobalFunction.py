@@ -2,6 +2,7 @@
 import re
 import time
 from os import walk
+import tkMessageBox
 
 USER_PATH = "user/"
 USER_EXTEND = ".usr"
@@ -13,9 +14,15 @@ PASSWORD_REGEX = "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
 EMAIL_REGEX = "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
 PHONE_REGEX = "^[\d]{11}$|^[\d]{10}$|^[\d]{7}$"
 ALG_OPTIONS = [
-    "AES_MODE_CFB",
-    "AES_MODE_EAX",
-    "DES"
+    "AES_MODE_EAX (Block Cipher)",
+    "AES_MODE_OCB (Block Cipher)",
+    "AES_MODE_CFB (Block Cipher)",
+    "AES_MODE_CTR (Block Cipher)",
+    "Single DES (Block Cipher)",
+    "RC2 (Block Cipher)",
+    "ARC4 (Stream Cipher)",
+    "ChaCha20 (Stream Cipher)",
+    "Salsa20 (Stream Cipher)"
 ]
 
 
@@ -71,3 +78,7 @@ def any_is_empty(*args):
 
 def get_user_file_path(name):
     return USER_PATH + name + USER_EXTEND
+
+
+def start_about_us():
+    tkMessageBox.showinfo("Team Information", "1. 1512387 - Đỗ Thành Nhơn \n2. 1512474 - Vòng Chí Tài \n")

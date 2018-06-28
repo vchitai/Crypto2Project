@@ -52,6 +52,7 @@ class Application(ttk.Frame):
         self.rowconfigure(0, pad=3, weight=1)
         self.rowconfigure(1, pad=3, weight=1)
         self.rowconfigure(2, pad=3, weight=1)
+        self.rowconfigure(3, pad=3, weight=1)
 
         self.register.grid(row=0, column=0, sticky=N + S + E + W, padx=3, pady=3)
         self.edit.grid(row=0, column=1, sticky=N + S + E + W, padx=3, pady=3)
@@ -59,6 +60,8 @@ class Application(ttk.Frame):
         self.decrypt.grid(row=1, column=1, sticky=N + S + E + W, padx=3, pady=3)
         self.sign.grid(row=2, column=0, sticky=N + S + E + W, padx=3, pady=3)
         self.verify.grid(row=2, column=1, sticky=N + S + E + W, padx=3, pady=3)
+        self.about_us.grid(row=3, column=0, sticky=N + S + E + W, padx=3, pady=3)
+        self.quit.grid(row=3, column=1, sticky=N + S + E + W, padx=3, pady=3)
 
     def __init__(self, master=None):
         # init
@@ -71,6 +74,8 @@ class Application(ttk.Frame):
         self.encrypt = ttk.Button(self, text="Encrypt file", command=start_encrypt)
         self.edit = ttk.Button(self, text="Edit existing user", command=start_editor)
         self.register = ttk.Button(self, text="Register New User", command=start_register)
+        self.about_us = ttk.Button(self, text="About Us", command=start_about_us)
+        self.quit = ttk.Button(self, text="Exit", command=self.quit)
         # design
         self.create_widgets()
 

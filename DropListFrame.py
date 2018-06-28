@@ -15,10 +15,10 @@ class DropListFrame(ttk.Frame):
         self.lb.pack(side=LEFT, padx=5, pady=5)
 
         self.var = StringVar(master)
-        if len(l) > 0:
-            self.var.set(l[0])  # default value
-        else:
-            self.var.set('')
+        if len(l) == 0 or l[0] != '':
+            l.insert(0, '')
+        self.var.set(l[0])  # default value
+
         self.dl = ttk.OptionMenu(self, self.var, *l)
         self.dl.pack(fill=X, padx=5, expand=True)
         # self.dl.pack()
