@@ -8,9 +8,13 @@ from GlobalFunction import *
 
 class RegisterDialog(Toplevel):
     def save_user(self):
+        email = self.email_frame.get_content()
+        if not is_valid_email(email):
+            tkMessageBox.showerror("Error", "Email must have format example@example.com", parent=self)
+            return False
         name = self.name_frame.get_content()
         if not is_valid_name(name):
-            tkMessageBox.showerror("Error", "Name is not valid, only accept character and number", parent=self)
+            tkMessageBox.showerror("Error", "Name is not valid, only accept character and white space", parent=self)
             return False
         password = self.pass_frame.get_content()
         if not is_valid_password(password):
@@ -35,7 +39,7 @@ class RegisterDialog(Toplevel):
         if key_length < 1024 or key_length % 256 != 0:
             tkMessageBox.showerror("Error", "RSA modulus length must be a multiple of 256 and >= 1024", parent=self)
             return False
-        user = User({'name': name, 'birthday': birthday, 'phone': phone, 'address': address})
+        user = User({'email': email, 'name': name, 'birthday': birthday, 'phone': phone, 'address': address})
         user.generate_key(key_length, password)
         user.hash_password(password)
         if user.save():
@@ -55,6 +59,7 @@ class RegisterDialog(Toplevel):
         self.title("Register New User")
         self.geometry("300x300+600+300")
         # setup entries
+        self.email_frame = TextInputFrame("Email", self)
         self.name_frame = TextInputFrame("Name", self)
         self.address_frame = TextInputFrame("Address", self)
         self.phone_frame = TextInputFrame("Phone", self)

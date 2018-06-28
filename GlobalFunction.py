@@ -8,8 +8,9 @@ USER_EXTEND = ".usr"
 SIG_EXTEND = ".sig"
 ENCRYPT_EXTEND = ".e"
 DECRYPT_EXTEND = ".d"
-NAME_REGEX = "[\w\d]{3,}"
+NAME_REGEX = "[A-za-z\s]{3,}"
 PASSWORD_REGEX = "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+EMAIL_REGEX = "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
 PHONE_REGEX = "^[\d]{11}$|^[\d]{10}$|^[\d]{7}$"
 ALG_OPTIONS = [
     "AES_MODE_CFB",
@@ -19,17 +20,21 @@ ALG_OPTIONS = [
 
 
 def get_user_list():
-    user = []
+    users = []
     for (dir_path, dir_names, file_names) in walk('user/'):
         user_ex = USER_EXTEND[1:]
         for file_name in file_names:
-            file_name_c = file_name.split('.')
+            file_name_c = file_name.rsplit('.',1)
             if len(file_name_c) != 2:
                 continue
             if file_name_c[1] == user_ex:
-                user.append(file_name_c[0])
+                users.append(file_name_c[0])
         break
-    return user
+    return users
+
+
+def is_valid_email(email):
+    return re.compile(EMAIL_REGEX).match(email)
 
 
 def is_valid_name(name):

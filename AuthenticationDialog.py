@@ -12,13 +12,13 @@ def show_authentication_error_box():
 class AuthenticationDialog(Toplevel):
 
     def authentication(self):
-        name = self.name_frame.get_content()
+        email = self.email_frame.get_content()
         password = self.pass_frame.get_content()
-        if any_is_empty(name, password):
+        if any_is_empty(email, password):
             show_authentication_error_box()
             return
 
-        user = User.load(name)
+        user = User.load(email)
         if user is None:
             show_authentication_error_box()
 
@@ -47,7 +47,7 @@ class AuthenticationDialog(Toplevel):
         self.geometry("300x150+600+300")
         self.cls = cls
         # setup entries
-        self.name_frame = TextInputFrame("Name", self)
+        self.email_frame = TextInputFrame("Email", self)
         self.pass_frame = TextInputFrame("Passphrase", self, '', '*')
         # setup buttons
         frame = ttk.Frame(self, relief=RAISED, borderwidth=1)

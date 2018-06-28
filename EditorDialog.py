@@ -27,10 +27,10 @@ class EditorDialog(Toplevel):
             return False
         address = self.address_frame.get_content()
 
-        user = User({'name': name, 'birthday': birthday, 'phone': phone, 'address': address})
+        self.user.update({'name': name, 'birthday': birthday, 'phone': phone, 'address': address})
         if password != "Insert if want to change":
-            user.hash_password(password)
-        user.save()
+            self.user.hash_password(password)
+        self.user.save_force()
         tkMessageBox.showinfo("Success", "Successfully edited user %s" % name, parent=self)
 
     def create_widgets(self):

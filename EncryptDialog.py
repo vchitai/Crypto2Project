@@ -23,14 +23,18 @@ class EncryptDialog(Toplevel):
         receiver = self.receiver_frame.get_content()
         if receiver == '':
             tkMessageBox.showerror("Error", "Please choose a receiver", parent=self)
+            return False
         user = User.load(receiver)
         if user is None:
             tkMessageBox.showerror("Error", "Receiver cannot be found", parent=self)
+            return False
         if user.encrypt(file_path, alg):
             self.withdraw()
             tkMessageBox.showinfo("Success", "Successfully encrypted file %s" % file_path, parent=self)
+            return False
         else:
             tkMessageBox.showerror("Error", "Encryption error", parent=self)
+            return False
 
     def create_widgets(self):
         self.cancel_button.pack(side=RIGHT, padx=5, pady=5)

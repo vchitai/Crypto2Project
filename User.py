@@ -23,10 +23,18 @@ class User(object):
             tmp[key] = b64encode(value).encode('utf-8')
         return json.dumps(tmp)
 
+    def update(self, dictionary):
+        self.__dict__.update(dictionary)
+
     def save(self):
-        if Path(get_user_file_path(self.name)).is_file():
+        if Path(get_user_file_path(self.email)).is_file():
             return False
-        with open(get_user_file_path(self.name), "w") as f:
+        with open(get_user_file_path(self.email), "w") as f:
+            f.write(self.summary())
+            return True
+
+    def save_force(self):
+        with open(get_user_file_path(self.email), "w") as f:
             f.write(self.summary())
             return True
 
@@ -135,10 +143,10 @@ class User(object):
                 return False
 
     @staticmethod
-    def load(name):
-        if not Path(get_user_file_path(name)).is_file():
+    def load(email):
+        if not Path(get_user_file_path(email)).is_file():
             return None
-        with open(get_user_file_path(name), "r") as f:
+        with open(get_user_file_path(email), "r") as f:
             obj = json.loads(f.read())
             for key, value in obj.iteritems():
                 obj[key] = b64decode(value)
