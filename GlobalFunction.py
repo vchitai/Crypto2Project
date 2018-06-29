@@ -14,6 +14,7 @@ PASSWORD_REGEX = "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
 EMAIL_REGEX = "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
 PHONE_REGEX = "^[\d]{11}$|^[\d]{10}$|^[\d]{7}$"
 ALG_OPTIONS = [
+    '',
     "AES_MODE_EAX (Block Cipher)",
     "AES_MODE_OCB (Block Cipher)",
     "AES_MODE_CFB (Block Cipher)",

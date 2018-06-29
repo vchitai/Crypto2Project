@@ -3,6 +3,7 @@ import binascii
 import json
 from base64 import b64encode, b64decode
 
+import os
 from Crypto import Random
 from Crypto.Cipher import AES, PKCS1_OAEP, DES, ARC2, ARC4, ChaCha20, Salsa20
 from Crypto.Hash import SHA256, SHAKE256
@@ -123,15 +124,15 @@ class User(object):
             else:
                 return False
 
-            if alg in ALG_OPTIONS[0:1]:
+            if alg in ALG_OPTIONS[1:3]:
                 cipher_text, tag = cipher.encrypt_and_digest(plain_text)
-            elif alg in ALG_OPTIONS[2:]:
+            elif alg in ALG_OPTIONS[3:]:
                 cipher_text = cipher.encrypt(plain_text)
                 tag = SHA256.new(plain_text).hexdigest()
             else:
                 return False
-            print 'here'
-            msg.update({'secret_key': cipher_rsa.encrypt(secret_key), 'cipher_text': cipher_text, 'tag': tag})
+            dir_path, file_name = os.path.split(file_path)
+            msg.update({'secret_key': cipher_rsa.encrypt(secret_key), 'cipher_text': cipher_text, 'tag': tag, 'file_name': file_name})
             for key, value in msg.iteritems():
                 msg[key] = b64encode(value).encode('utf-8')
             fo.write(json.dumps(msg))
@@ -141,7 +142,7 @@ class User(object):
         private_key = self.get_private_key(password)
         if private_key is None:
             return {'status': False, 'msg': "Cannot get private key"}
-        with open(file_path, 'rb') as fi, open(file_path + DECRYPT_EXTEND, 'wb') as fo:
+        with open(file_path, 'rb') as fi:
             try:
                 msg = json.loads(fi.read())
             except ValueError:
@@ -173,9 +174,9 @@ class User(object):
                     return {'status': False, 'msg': "Cannot define the algorithm used to encrypt this file"}
 
                 # decrypt and verify
-                if msg['alg'] in ALG_OPTIONS[0:1]:
+                if msg['alg'] in ALG_OPTIONS[1:3]:
                     decrypted_msg = cipher.decrypt_and_verify(msg['cipher_text'], msg['tag'])
-                elif msg['alg'] in ALG_OPTIONS[2:]:
+                elif msg['alg'] in ALG_OPTIONS[3:]:
                     decrypted_msg = cipher.decrypt(msg['cipher_text'])
                     SHA256.new(decrypted_msg).hexdigest(), msg['tag']
                     if SHA256.new(decrypted_msg).hexdigest() != msg['tag']:
@@ -184,7 +185,9 @@ class User(object):
                     return {'status': False, 'msg': "Cannot define the algorithm used to encrypt this file"}
             except ValueError, KeyError:
                 return {'status': False, 'msg': "Decrypt failed, you are not the owner of this file"}
-            fo.write(decrypted_msg)
+            dir_path, file_name = os.path.split(file_path)
+            with open(dir_path + '/' + msg['file_name'], 'wb') as fo:
+                fo.write(decrypted_msg)
             return {'status': True, 'msg': "Successfully decrypted file %s" % file_path}
 
     def sign(self, file_path, password):
