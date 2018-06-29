@@ -1,5 +1,10 @@
 # Crypto2Project
 
+[Update 29/06/2018]
+
+*Thêm Video Demo*
+*Sửa lỗi liên quan đến danh sách thuật toán mã hóa bất đối xứng*
+
 [Update 28/06/2018]
 
 *Thông tin lưu trong json được mã hóa bằng base64encoder*
@@ -7,6 +12,10 @@
 ![alt text][logo]
 
 [logo]: /img/Demo.PNG "Demo"
+
+## Demo ##
+
+[![Alt Demo](https://img.youtube.com/vi/https://youtu.be/7ADGZjY-sLQ/0.jpg)](http://www.youtube.com/watch?v=https://youtu.be/7ADGZjY-sLQ)
 
 ## Export / Import thông tin tài khoản
 
