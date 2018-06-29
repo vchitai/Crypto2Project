@@ -3,6 +3,7 @@
 [Update 29/06/2018]
 
 *Thêm Video Demo*
+
 *Sửa lỗi liên quan đến danh sách thuật toán mã hóa bất đối xứng*
 
 [Update 28/06/2018]
@@ -13,7 +14,7 @@
 
 [logo]: /img/Demo.PNG "Demo"
 
-## Demo ##
+## Video Demo ##
 
 [![Alt Demo](https://img.youtube.com/vi/7ADGZjY-sLQ/0.jpg)](http://www.youtube.com/watch?v=7ADGZjY-sLQ)
 
