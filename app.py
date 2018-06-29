@@ -81,6 +81,13 @@ class Application(ttk.Frame):
 
 
 def main():
+    import os, errno
+
+    try:
+        os.makedirs("./user")
+    except OSError as e:
+        if e.errno != errno.EEXIST:
+            raise
     root = Tk()
     root.geometry("300x300+500+200")
     root.title("Crypto Tool")

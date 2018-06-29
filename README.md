@@ -2,6 +2,8 @@
 
 [Update 29/06/2018]
 
+*Thêm Release*
+
 *Thêm Video Demo*
 
 *Sửa lỗi liên quan đến danh sách thuật toán mã hóa bất đối xứng*

@@ -1,9 +1,13 @@
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
 *.iml
-file/*
-user/*.usr
+file/
+user/
 venv/
+build/
+dist/
+*.spec
+
 
 ## Directory-based project format:
 .idea/

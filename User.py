@@ -4,11 +4,11 @@ import json
 from base64 import b64encode, b64decode
 
 import os
-from Crypto import Random
-from Crypto.Cipher import AES, PKCS1_OAEP, DES, ARC2, ARC4, ChaCha20, Salsa20
-from Crypto.Hash import SHA256, SHAKE256
-from Crypto.PublicKey import RSA
-from Crypto.Signature import pss
+from Cryptodome import Random
+from Cryptodome.Cipher import AES, PKCS1_OAEP, DES, ARC2, ARC4, ChaCha20, Salsa20
+from Cryptodome.Hash import SHA256, SHAKE256
+from Cryptodome.PublicKey import RSA
+from Cryptodome.Signature import pss
 from pathlib import Path
 
 from GlobalFunction import *
