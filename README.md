@@ -15,7 +15,7 @@
 
 ## Demo ##
 
-[![Alt Demo](https://img.youtube.com/vi/https://youtu.be/7ADGZjY-sLQ/0.jpg)](http://www.youtube.com/watch?v=https://youtu.be/7ADGZjY-sLQ)
+[![Alt Demo](https://img.youtube.com/vi/7ADGZjY-sLQ/0.jpg)](http://www.youtube.com/watch?v=7ADGZjY-sLQ)
 
 ## Export / Import thông tin tài khoản
 
